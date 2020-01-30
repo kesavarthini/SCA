@@ -8,9 +8,10 @@ VOLUME /var/lib/docker-images
 EXPOSE 9090
 
 # The application's jar file
+ARG JAR_FILE=target/order-service-0.0.1-SNAPSHOT.jar
 
 # Add the application's jar to the container
-ADD order-service/target/order-service-0.0.1-SNAPSHOT.jar order-service-0.0.1-SNAPSHOT.jar
+ADD ${JAR_FILE} order-service-0.0.1-SNAPSHOT.jar
 
 # Run the jar file 
 ENTRYPOINT ["java","-jar","order-service-0.0.1-SNAPSHOT.jar"]
