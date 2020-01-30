@@ -10,7 +10,7 @@ EXPOSE 9090
 # The application's jar file
 
 # Add the application's jar to the container
-ADD order-service/target/order-service-0.0.1-SNAPSHOT.jar order-service-0.0.1-SNAPSHOT.jar
+ADD target/order-service-0.0.1-SNAPSHOT.jar order-service-0.0.1-SNAPSHOT.jar
 
 # Run the jar file 
 ENTRYPOINT ["java","-jar","order-service-0.0.1-SNAPSHOT.jar"]
