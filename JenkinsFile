@@ -9,7 +9,7 @@ pipeline {
             steps{
                 echo 'Building docker image'
 
-                   sh 'cd order-service && sudo docker build -t image_of_order_service .'
+                   sh 'cd order-service && sudo docker build -t image_of_order_service -f order-service/Dockerfile.'
 				 	//sh 'sudo mvn -f DataService/pom.xml clean install pmd:pmd sonar:sonar'
 				 	//sh 'sudo mvn -f order-service/pom.xml clean install pmd:pmd sonar:sonar'
                 }
