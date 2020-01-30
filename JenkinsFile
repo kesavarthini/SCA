@@ -8,14 +8,14 @@ pipeline {
         stage('Build Docker '){
             steps{
                 echo 'Building docker image'
-                   sh ' sudo docker build -f order-service/Dockerfile -t image_of_order_service Order_Service'
+                   sh ' sudo docker build -f order-service/Dockerfile -t image_of_order_service order_service'
 				 	//sh 'sudo mvn -f DataService/pom.xml clean install pmd:pmd sonar:sonar'
 				 	//sh 'sudo mvn -f order-service/pom.xml clean install pmd:pmd sonar:sonar'
                 }
         }
         stage('Docker Run') {
                 steps {
-                    sh 'sudo docker run  OrderService_Backend'
+                    sh 'sudo docker run  order_service'
                 }
             }
 	   stage('Test') {
