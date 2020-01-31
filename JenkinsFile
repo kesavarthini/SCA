@@ -1,27 +1,30 @@
 properties([
-  buildDiscarder(logRotator(numToKeepStr: '3')),
+  buildDiscarder(logRotator(numToKeepStr: '1')),
   disableConcurrentBuilds(),
 ])
 pipeline {
+	options {
+        disableConcurrentBuilds()
+      }
     agent any
 	  stages {
-        stage('Build Docker '){
+        stage('Building Jar '){
             steps{
-                echo 'Building docker image'
+                echo 'Build docker image'
 
-                   sh 'cd order-service && sudo docker build -t image_of_order_service  .'
+                 //  sh 'cd order-service && sudo docker build -t image_of_order_service  .'
 				 	//sh 'sudo mvn -f DataService/pom.xml clean install pmd:pmd sonar:sonar'
-				 	//sh 'sudo mvn -f order-service/pom.xml clean install pmd:pmd sonar:sonar'
+				 	sh 'sudo mvn -f order-service/pom.xml clean install pmd:pmd sonar:sonar'
                 }
         }
-        stage('Docker Run') {
+        stage('Test') {
                 steps {
-                    sh 'sudo docker run  order_service'
+                    sh 'cd order-service && sudo mvn test'
                 }
             }
-	   stage('Test') {
+	   stage('Deploy') {
                 steps {
-                    echo 'This is the Test Stage'
+                    echo 'cd order-service/target && sudo java-jar order-service-0.0.1-SNAPSHOT.jar'
                 }
 		
             }
