@@ -10,7 +10,7 @@ pipeline {
 	  stages {
         stage('Building Jar '){
             steps{
-                echo 'Build docker imag'
+                echo 'Build docker image'
 
                  //  sh 'cd order-service && sudo docker build -t image_of_order_service  .'
 				 	//sh 'sudo mvn -f DataService/pom.xml clean install pmd:pmd sonar:sonar'
