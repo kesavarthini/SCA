@@ -1,4 +1,4 @@
-properties([
+ properties([
   buildDiscarder(logRotator(numToKeepStr: '1')),
   disableConcurrentBuilds(),
 ])
@@ -24,7 +24,7 @@ pipeline {
             }
 	   stage('Deploy') {
                 steps {
-                    sh 'cd order-service/target && sudo java-jar order-service-0.0.1-SNAPSHOT.jar'
+                    sh 'cd order-service/target && sudo java -jar order-service-0.0.1-SNAPSHOT.jar'
                 }
 		
             }
