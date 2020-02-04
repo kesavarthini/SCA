@@ -14,7 +14,7 @@ pipeline {
 
                  //  sh 'cd order-service && sudo docker build -t image_of_order_service  .'
 				 	//sh 'sudo mvn -f DataService/pom.xml clean install pmd:pmd sonar:sonar'
-				 	sh 'sudo mvn -f order-service/pom.xml clean install pmd:pmd sonar:sonar'
+				 	sh 'sudo mvn -f order-service/pom.xml clean install pmd:pmd'
                 }
         }
         stage('Test') {
@@ -24,7 +24,7 @@ pipeline {
             }
 	   stage('Deploy') {
                 steps {
-                    echo 'cd order-service/target && sudo java-jar order-service-0.0.1-SNAPSHOT.jar'
+                    sh 'cd order-service/target && sudo java-jar order-service-0.0.1-SNAPSHOT.jar'
                 }
 		
             }
